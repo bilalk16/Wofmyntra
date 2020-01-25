@@ -1,9 +1,7 @@
 package myntra.stepDef;
 
 import static org.testng.Assert.fail;
-
 import java.util.concurrent.TimeUnit;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,8 +12,6 @@ import myntra.utilities.SetupDrivers;
 public class myntraLoginStepDef {
 	
 	MyntraLoginActions loginactions =  new MyntraLoginActions();
-	
-	// comments
 	
 	@Given("^myntra login page is launched$")
 	public void myntra_login_page_is_launched()  {
@@ -30,7 +26,7 @@ public class myntraLoginStepDef {
 	}
 
 	@When("^user input wrong \"([^\"]*)\" and wrong \"([^\"]*)\"$")
-	public void user_input_wrong_and_wrong(String email, String password)  {
+	public void user_input_wrong_and_wrong(String email, String password) throws InterruptedException  {
 		
 		loginactions.inputEmail(email);
 		loginactions.inputPassword(password);
@@ -45,9 +41,9 @@ public class myntraLoginStepDef {
 		
 		String msg = loginactions.errorMsg();
 		if (msg.toLowerCase().contains("account") || msg.toLowerCase().contains("invalid")) {
-			System.out.println(">> PASSED");
+			System.out.println("------->> Login Feature:: PASSED");
 		} else {
-			System.out.println(">> FAILED");
+			System.out.println("------->> Login Feature:: FAILED");
 			fail();
 
 		}

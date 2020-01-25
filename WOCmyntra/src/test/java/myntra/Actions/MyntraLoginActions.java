@@ -6,7 +6,7 @@ import myntra.Elements.MyntraLoginElements;
 import myntra.utilities.SetupDrivers;
 
 public class MyntraLoginActions {
-
+      
 	MyntraLoginElements LoginElements;
 	
 	public MyntraLoginActions() {
@@ -29,24 +29,16 @@ public class MyntraLoginActions {
 		
 	}
 
-	public void submit() {
-		
-		
+	public void submit() throws InterruptedException {
 		LoginElements.submit.click();
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			System.out.println("catch done");
-			e.printStackTrace();
+		Thread.sleep(3000);
 		}
-	}
 
 	public String errorMsg() {
 		String msg = LoginElements.errorMsg.getText();
 		return msg;
 
 	}
-	
 	
 }
 	
